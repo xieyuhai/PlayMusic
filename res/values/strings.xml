@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">音乐播放器</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_init">InitActivity</string>
+    <string name="title_activity_add_music">AddMusicActivity</string>
+    <!--  -->
+    <string name="all">All</string>
+    <string name="music">I love音乐</string>
+    <string name="add_music">请添加歌曲！</string>
+    <string name="local_no_song">本地没有歌曲</string>
+    <string name="album_name">专辑名称:</string>
+    <string name="song_size">歌曲大小:</string>
+    <string name="artist_name">歌手名:</string>
+    <string name="song_duration">歌曲时长:</string>
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="add">确定添加到音乐列表？</string>
+    <string name="exit">确定要退出应用？</string>
+    <string name="exit_player">Exit Player</string>
+    <string name="end_music">当前为最后一首！</string>
+    <string name="first_musix">已经是第一首音乐！</string>
+    <string name="delete_music">确定删除吗？</string>
+
+</resources>

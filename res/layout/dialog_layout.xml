@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_round"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/messageTextView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="@dimen/margin_size_ten"
+        android:gravity="center"
+        android:lines="2"
+        android:text="@string/add"
+        android:textSize="@dimen/text_big"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_size_twenty"
+        android:layout_marginTop="@dimen/margin_size_twenty"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:id="@+id/cancelTextView"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_huise"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/baise"
+                android:textSize="@dimen/text_big" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:id="@+id/sureTextView"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/margin_size_twenty"
+                android:background="@drawable/bg_lanse"
+                android:gravity="center"
+                android:text="@string/sure"
+                android:textColor="@color/baise"
+                android:textSize="@dimen/text_big" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
