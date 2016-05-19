@@ -5,11 +5,12 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Handler;
 import android.util.Log;
 
-public class SongChangeListener implements SensorEventListener {
+public class onSongChangeListener implements SensorEventListener {
 	private static final int SPEED_SHRESHOLD = 3000;
-	private static final int UPTATE_INTERVAL_TIME = 100;//70;
+	private static final int UPTATE_INTERVAL_TIME = 100;// 70;
 	private SensorManager sensorManager;
 	private Sensor sensor;
 	private OnSongChangeListener onShakeListener;
@@ -19,7 +20,7 @@ public class SongChangeListener implements SensorEventListener {
 	private float lastZ;
 	private long lastUpdateTime;
 
-	public SongChangeListener(Context c) {
+	public onSongChangeListener(Context c) {
 		mContext = c;
 		start();
 	}
@@ -75,7 +76,12 @@ public class SongChangeListener implements SensorEventListener {
 		// "lastY=" + lastY + "lastZ=" + lastZ + "speed="
 		// + speed);
 		if (speed >= SPEED_SHRESHOLD) {
-			onShakeListener.onSongChange();
+			new Handler().postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					onShakeListener.onSongChange();
+				}
+			}, 1000);
 		}
 	}
 

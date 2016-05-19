@@ -1,0 +1,191 @@
+com.bs.activity.AddMusicActivity -> com.bs.activity.AddMusicActivity:
+    java.util.List list -> a
+    com.bs.adapter.MusicAdapter adapter -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    java.util.List access$0(com.bs.activity.AddMusicActivity) -> a
+com.bs.activity.AddMusicActivity$1 -> com.bs.activity.a:
+    com.bs.activity.AddMusicActivity this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    com.bs.activity.AddMusicActivity access$0(com.bs.activity.AddMusicActivity$1) -> a
+com.bs.activity.AddMusicActivity$1$1 -> com.bs.activity.b:
+    com.bs.activity.AddMusicActivity$1 this$1 -> a
+    com.bs.entity.MusicBean val$bean -> b
+    void sure() -> a
+    void cancel() -> b
+com.bs.activity.InitActivity -> com.bs.activity.InitActivity:
+    void onCreate(android.os.Bundle) -> onCreate
+com.bs.activity.InitActivity$1 -> com.bs.activity.c:
+    com.bs.activity.InitActivity this$0 -> a
+    void run() -> run
+com.bs.activity.MainActivity -> com.bs.activity.MainActivity:
+    com.bs.service.BackgroundService service -> c
+    android.content.ServiceConnection conn -> d
+    android.widget.TextView title -> e
+    com.bs.adapter.MusicAdapter adapter -> f
+    com.bs.activity.MainActivity$MyHandle handler -> g
+    java.util.List list -> h
+    android.widget.ImageView pre -> i
+    android.widget.ImageView play -> j
+    android.widget.ImageView stop -> k
+    android.widget.ImageView next -> l
+    android.widget.SeekBar seekbar -> a
+    int position -> m
+    com.bs.listener.SongChangeListener mSongChangeListener -> n
+    java.lang.Runnable runnable -> b
+    void onDestroy() -> onDestroy
+    void onCreate(android.os.Bundle) -> onCreate
+    void onResume() -> onResume
+    void getMusic() -> a
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void onClick(android.view.View) -> onClick
+    void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick
+    void onStop() -> onStop
+    void onPause() -> onPause
+    void startMusic() -> b
+    void access$0(com.bs.activity.MainActivity,com.bs.service.BackgroundService) -> a
+    com.bs.service.BackgroundService access$1(com.bs.activity.MainActivity) -> a
+    com.bs.activity.MainActivity$MyHandle access$2(com.bs.activity.MainActivity) -> b
+    void access$3(java.util.List) -> a
+    java.util.List access$4() -> c
+    com.bs.listener.SongChangeListener access$5(com.bs.activity.MainActivity) -> c
+    void access$6(com.bs.activity.MainActivity,int) -> a
+com.bs.activity.MainActivity$1 -> com.bs.activity.d:
+    com.bs.activity.MainActivity this$0 -> a
+    void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
+    void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
+com.bs.activity.MainActivity$2 -> com.bs.activity.e:
+    com.bs.activity.MainActivity this$0 -> a
+    void run() -> run
+com.bs.activity.MainActivity$3 -> com.bs.activity.f:
+    com.bs.activity.MainActivity this$0 -> a
+    void onStopTrackingTouch(android.widget.SeekBar) -> onStopTrackingTouch
+    void onStartTrackingTouch(android.widget.SeekBar) -> onStartTrackingTouch
+    void onProgressChanged(android.widget.SeekBar,int,boolean) -> onProgressChanged
+com.bs.activity.MainActivity$4 -> com.bs.activity.g:
+    com.bs.activity.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.bs.activity.MainActivity$5 -> com.bs.activity.h:
+    com.bs.activity.MainActivity this$0 -> a
+    void onSongChange() -> a
+com.bs.activity.MainActivity$5$1 -> com.bs.activity.i:
+    com.bs.activity.MainActivity$5 this$1 -> a
+    void run() -> run
+com.bs.activity.MainActivity$6 -> com.bs.activity.j:
+    com.bs.activity.MainActivity this$0 -> a
+    boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
+    com.bs.activity.MainActivity access$0(com.bs.activity.MainActivity$6) -> a
+com.bs.activity.MainActivity$6$1 -> com.bs.activity.k:
+    com.bs.activity.MainActivity$6 this$1 -> a
+    com.bs.entity.MusicBean val$bean -> b
+    void sure() -> a
+    void cancel() -> b
+com.bs.activity.MainActivity$7 -> com.bs.activity.l:
+    com.bs.activity.MainActivity this$0 -> a
+    void run() -> run
+com.bs.activity.MainActivity$8 -> com.bs.activity.m:
+    com.bs.activity.MainActivity this$0 -> a
+    void sure() -> a
+    void cancel() -> b
+com.bs.activity.MainActivity$MyHandle -> com.bs.activity.n:
+    android.content.Context context -> a
+    com.bs.adapter.MusicAdapter adapter -> b
+    void handleMessage(android.os.Message) -> handleMessage
+com.bs.adapter.MusicAdapter -> com.bs.a.a:
+    android.view.LayoutInflater layoutInflater -> a
+    java.util.List beans -> b
+    android.content.Context context -> c
+    int getCount() -> getCount
+    java.lang.Object getItem(int) -> getItem
+    long getItemId(int) -> getItemId
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.bs.adapter.MusicAdapter$ViewHolder -> com.bs.a.b:
+    android.graphics.Typeface typeFace -> a
+    android.widget.TextView zhuanjiTextView -> b
+    android.widget.TextView gequDaxiaoTextView -> c
+    android.widget.TextView geshouMingTextView -> d
+    android.widget.TextView shichangTextView -> e
+    android.widget.ImageView tupianImageView -> f
+com.bs.db.DBService -> com.bs.b.a:
+    com.bs.db.MySqliteOpenHelper helper -> a
+    com.bs.db.DBService dbService -> b
+    com.bs.db.DBService getDBInstance(android.content.Context) -> a
+    java.util.List selectAllOrSingle(java.lang.String) -> a
+    void insertOrUpdate(com.bs.entity.MusicBean) -> a
+    void delete(java.lang.String) -> b
+com.bs.db.MySqliteOpenHelper -> com.bs.b.b:
+    void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
+    void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
+com.bs.entity.MusicBean -> com.bs.c.a:
+    java.lang.String id -> a
+    java.lang.String title -> b
+    java.lang.String album -> c
+    java.lang.String artist -> d
+    java.lang.String url -> e
+    int duration -> f
+    long size -> g
+    java.lang.String musicID -> h
+    java.lang.String album_id -> i
+com.bs.listener.DialogListener -> com.bs.d.a:
+    void sure() -> a
+    void cancel() -> b
+com.bs.listener.SongChangeListener -> com.bs.d.b:
+    android.hardware.SensorManager sensorManager -> a
+    android.hardware.Sensor sensor -> b
+    com.bs.listener.SongChangeListener$OnSongChangeListener onShakeListener -> c
+    android.content.Context mContext -> d
+    float lastX -> e
+    float lastY -> f
+    float lastZ -> g
+    long lastUpdateTime -> h
+    void start() -> a
+    void stop() -> b
+    void setOnShakeListener(com.bs.listener.SongChangeListener$OnSongChangeListener) -> a
+    void onSensorChanged(android.hardware.SensorEvent) -> onSensorChanged
+    void onAccuracyChanged(android.hardware.Sensor,int) -> onAccuracyChanged
+    com.bs.listener.SongChangeListener$OnSongChangeListener access$0(com.bs.listener.SongChangeListener) -> a
+com.bs.listener.SongChangeListener$1 -> com.bs.d.c:
+    com.bs.listener.SongChangeListener this$0 -> a
+    void run() -> run
+com.bs.listener.SongChangeListener$OnSongChangeListener -> com.bs.d.d:
+    void onSongChange() -> a
+com.bs.service.BackgroundService -> com.bs.service.BackgroundService:
+    android.os.Vibrator mVibrator -> a
+    android.media.MediaPlayer player -> b
+    android.os.IBinder binder -> c
+    android.os.IBinder onBind(android.content.Intent) -> onBind
+    void onCompletion(android.media.MediaPlayer) -> onCompletion
+    void onCreate() -> onCreate
+    int onStartCommand(android.content.Intent,int,int) -> onStartCommand
+    void onDestroy() -> onDestroy
+    void startMusic(java.lang.String) -> a
+    int getCurrentPosition() -> a
+    void seekTo(int) -> a
+    void startMusic1() -> b
+    boolean isPlaying() -> c
+    void stopMusic() -> d
+    void pauseMusic() -> e
+    void releaseMusic() -> f
+    void cancel() -> g
+com.bs.service.BackgroundService$AudioBinder -> com.bs.service.a:
+    com.bs.service.BackgroundService this$0 -> a
+    com.bs.service.BackgroundService getService() -> a
+com.bs.util.ScreenUtil -> com.bs.e.a:
+    int widthPixel -> a
+    android.content.Context context -> b
+    com.bs.util.ScreenUtil instance -> c
+    com.bs.util.ScreenUtil get(android.content.Context) -> a
+com.bs.util.Utils -> com.bs.e.b:
+    android.net.Uri albumArtUri -> a
+    void showDialog(android.content.Context,int,java.lang.String,com.bs.listener.DialogListener) -> a
+    void showToast(android.content.Context,java.lang.String) -> a
+    android.graphics.Bitmap getDefaultArtwork(android.content.Context,boolean) -> a
+    android.graphics.Bitmap getArtworkFromFile(android.content.Context,long,long) -> a
+    android.graphics.Bitmap getArtwork(android.content.Context,long,long,boolean,boolean) -> a
+com.bs.util.Utils$1 -> com.bs.e.c:
+    android.app.AlertDialog val$dialog -> a
+    com.bs.listener.DialogListener val$listener -> b
+    void onClick(android.view.View) -> onClick
+com.bs.util.Utils$2 -> com.bs.e.d:
+    android.app.AlertDialog val$dialog -> a
+    com.bs.listener.DialogListener val$listener -> b
+    void onClick(android.view.View) -> onClick

@@ -12,7 +12,6 @@ import android.os.Vibrator;
 public class BackgroundService extends Service implements MediaPlayer.OnCompletionListener {
 	private Vibrator mVibrator;
 	private MediaPlayer player;
-	private int position = 0;// 当前的歌曲
 
 	private final IBinder binder = new AudioBinder();
 
@@ -26,25 +25,22 @@ public class BackgroundService extends Service implements MediaPlayer.OnCompleti
 	 */
 	@Override
 	public void onCompletion(MediaPlayer player) {
-		// TODO Auto-generated method stub
-		stopSelf();// 结束了，则结束Service
+		stopSelf();// 结束Service
 	}
 
-	// 在这里我们需要实例化MediaPlayer对象
 	public void onCreate() {
 		super.onCreate();
 		player = new MediaPlayer();
 		mVibrator = (Vibrator) getApplication().getSystemService(VIBRATOR_SERVICE);
-		// player.setOnCompletionListener(this);
 	}
 
 	/**
 	 * 该方法在SDK2.0才开始有的，替代原来的onStart方法
 	 */
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		if (!player.isPlaying()) {
-			player.start();
-		}
+		// if (!player.isPlaying()) {
+		// player.start();
+		// }
 		return START_STICKY;
 	}
 
@@ -55,7 +51,6 @@ public class BackgroundService extends Service implements MediaPlayer.OnCompleti
 			player.release();
 			player = null;
 		}
-
 	}
 
 	// 为了和Activity交互，我们需要定义一个Binder对象
@@ -120,6 +115,16 @@ public class BackgroundService extends Service implements MediaPlayer.OnCompleti
 	}
 
 	/**
+	 * 播放状态
+	 */
+	public boolean isPlaying() {
+		if (player != null) {
+			return player.isPlaying();
+		}
+		return false;
+	}
+
+	/**
 	 * 停止播放
 	 */
 	public void stopMusic() {
@@ -142,6 +147,7 @@ public class BackgroundService extends Service implements MediaPlayer.OnCompleti
 	 */
 	public void releaseMusic() {
 		if (player != null) {
+			player.reset();
 			player.release();
 			player = null;
 		}
@@ -154,12 +160,11 @@ public class BackgroundService extends Service implements MediaPlayer.OnCompleti
 		mVibrator.cancel();
 	}
 
-	/**
-	 * 后退播放进度
-	 */
-	public void haveFun() {
-		if (player.isPlaying() && player.getCurrentPosition() > 2500) {
-			player.seekTo(player.getCurrentPosition() - 2500);
-		}
-	}
+	// /**
+	// */
+	// public void backFun() {
+	// if (player.isPlaying() && player.getCurrentPosition() > 2000) {
+	// player.seekTo(player.getCurrentPosition() - 2000);
+	// }
+	// }
 }

@@ -8,8 +8,9 @@
         android:id="@+id/tupianImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:scaleType="centerCrop"
         android:layout_gravity="center_vertical"
+        android:padding="5dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher" />
 
     <LinearLayout
@@ -18,13 +19,15 @@
         android:layout_gravity="center_vertical"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingLeft="5dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
             <TextView
+                android:id="@+id/zhuanjiTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/album_name"
@@ -44,6 +47,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
+                android:id="@+id/gequDaxiaoTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/song_size"
@@ -63,6 +67,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
+                android:id="@+id/geshouMingTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/artist_name"
@@ -82,6 +87,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
+                android:id="@+id/shichangTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/song_duration"

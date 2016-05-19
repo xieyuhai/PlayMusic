@@ -61,6 +61,9 @@ public class DBService {
 
 			String albumUrl = cursor.getString(cursor.getColumnIndexOrThrow("albumUrl"));
 
+			// 获取专辑图片
+			int album_id = cursor.getInt(cursor.getColumnIndexOrThrow("album_id"));
+
 			MusicBean bean = new MusicBean();
 			bean.id = id;
 			bean.title = tilte;
@@ -71,6 +74,8 @@ public class DBService {
 			bean.size = size;
 			bean.musicID = musicID2;
 			bean.albumUrl = albumUrl;
+			//
+			bean.album_id = album_id + "";
 			list.add(bean);
 		}
 		return list;
@@ -92,6 +97,8 @@ public class DBService {
 		values.put("duration", bean.duration);
 		values.put("size", bean.size);
 		values.put("musicID", bean.musicID);
+		//
+		values.put("album_id", bean.album_id);
 		if (TextUtils.isEmpty(bean.id)) {
 			db.insert(MySqliteOpenHelper.TABLE_NAME, null, values);
 		} else {

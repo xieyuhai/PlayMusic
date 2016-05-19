@@ -17,7 +17,7 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		String sql = "CREATE TABLE " + TABLE_NAME
-				+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT,musicID TEXT,title TEXT,album TEXT, artist TEXT,url TEXT,duration INTEGER,size INTEGER,albumUrl TEXT) ";
+				+ " (_id INTEGER PRIMARY KEY AUTOINCREMENT,musicID TEXT,title TEXT,album TEXT, artist TEXT,url TEXT,duration INTEGER,size INTEGER,albumUrl TEXT,album_id TEXT) ";
 		db.execSQL(sql);
 	}
 

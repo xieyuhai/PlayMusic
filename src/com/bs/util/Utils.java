@@ -7,7 +7,9 @@ import java.io.InputStream;
 
 import com.bs.listener.DialogListener;
 import com.bs.rockingmusic1.R;
+import com.bs.view.MusicWaitBox;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -18,13 +20,89 @@ import android.graphics.BitmapFactory.Options;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Utils {
+	/**
+	 * 加载进度
+	 * 
+	 * @param context
+	 */
+	private static MusicWaitBox musicWaitBox = null;
+
+	/**
+	 * 创建加载进度
+	 * 
+	 * @param context
+	 */
+	public static void showMusicWaitBox(Activity context) {
+		ViewGroup rootContainer = (ViewGroup) context.getWindow().getDecorView().findViewById(android.R.id.content);
+		rootContainer.setBackgroundColor(0x7f000000);
+		musicWaitBox = new MusicWaitBox(context);
+		musicWaitBox.setMessage("加载中。。。。");
+		rootContainer.addView(musicWaitBox);
+		ViewGroup.LayoutParams params = musicWaitBox.getLayoutParams();
+		params.width = LayoutParams.MATCH_PARENT;
+		params.height = LayoutParams.MATCH_PARENT;
+		musicWaitBox.setLayoutParams(params);
+		musicWaitBox.startAnimation();
+	}
+
+	/**
+	 * 停止进度
+	 */
+	public static void stopMusicWaitBox() {
+		if (musicWaitBox != null) {
+			musicWaitBox.stopAnimation();
+			musicWaitBox = null;
+		}
+	}
+
+	/**
+	 * 歌曲时长换算为分钟
+	 * 
+	 * @param duration
+	 * @return
+	 */
+	public static String getDuration(int oldDuration) {
+		int duration = oldDuration / 1000;
+		if (duration == 0) {
+			return oldDuration + "MS";
+		} else if (duration < 60) {
+			return duration + "S";
+		} else if (duration > 60 && duration / 60 < 60) {
+			return duration / 60 + "M";
+		} else if (duration / 60 > 60) {
+			return duration / 60 / 60 + "H";
+		}
+		return "";
+	}
+
+	/**
+	 * 
+	 * @param oldSize
+	 * @return
+	 */
+	public static String getFileSize(long oldSize) {
+		long size = oldSize / 1024l;
+		if (size == 0l) {
+			return size + "BYTE";
+		} else if (size < 1024l) {
+			return size + "KB";
+		} else if (size > 1024l && size / 1024l < 1024l) {
+			return size / 1024l + "MB";
+		} else if (size / 1024l > 1024l) {
+			return size / 1024l / 1024l + "GB";
+		}
+		return "";
+	}
 
 	/**
 	 * 显示对话框
@@ -40,7 +118,7 @@ public class Utils {
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT);
 		params.setMargins(0, 0, 0, 0);
-		params.width = ScreenUtil.get(context).widthPixel * 4 / 5;
+		params.width = ScreenUtil.get(context.getApplicationContext()).widthPixel * 4 / 5;
 		dialog.addContentView(view, params);
 
 		if (!TextUtils.isEmpty(msg)) {
@@ -59,7 +137,6 @@ public class Utils {
 			@Override
 			public void onClick(View view) {
 				dialog.dismiss();
-				// L.pop();
 				listener.cancel();
 			}
 		});
@@ -72,7 +149,7 @@ public class Utils {
 	 * @param msg
 	 */
 	public static void showToast(Context context, String msg) {
-		Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+		Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 	}
 
 	/**
@@ -85,19 +162,40 @@ public class Utils {
 		Uri uri = Uri.parse(str);
 		ParcelFileDescriptor pfd = null;
 		try {
-			pfd = context.getContentResolver().openFileDescriptor(uri, "r");
+			pfd = context.getApplicationContext().getContentResolver().openFileDescriptor(uri, "r");
 		} catch (FileNotFoundException e) {
 		}
 		Bitmap bm;
 		if (pfd != null) {
 			FileDescriptor fd = pfd.getFileDescriptor();
 			bm = BitmapFactory.decodeFileDescriptor(fd);
+
+			BitmapFactory.Options options = new Options();
+			//
+			options.inSampleSize = 1;
+			// 只进行大小判断
+			options.inJustDecodeBounds = true;
+			// 调用此方法得到options得到图片大小
+			BitmapFactory.decodeFileDescriptor(fd, null, options);
+			// 我们的目标是在800pixel的画面上显示
+			// 所以需要调用computeSampleSize得到图片缩放的比例
+			options.inSampleSize = 100;
+			// 我们得到了缩放的比例，现在开始正式读入Bitmap数据
+			options.inJustDecodeBounds = false;
+			options.inDither = false;
+			options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+
+			// 根据options参数，减少所需要的内存
+			bm = BitmapFactory.decodeFileDescriptor(fd, null, options);
+
 			return bm;
 		}
 		return null;
 	}
 
-	/********* ----------http://blog.csdn.net/wwj_748/article/details/9237561--------- */
+	/*********
+	 * ----------http://blog.csdn.net/wwj_748/article/details/9237561---------
+	 */
 
 	// 获取专辑封面的Uri
 	private static final Uri albumArtUri = Uri.parse("content://media/external/audio/albumart");
@@ -163,7 +261,8 @@ public class Utils {
 			// 根据options参数，减少所需要的内存
 			bm = BitmapFactory.decodeFileDescriptor(fd, null, options);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
+			Log.i("TAG", e.getMessage() + "");
 		}
 		return bm;
 	}

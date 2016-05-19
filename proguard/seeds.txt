@@ -1,0 +1,8 @@
+com.bs.activity.AddMusicActivity
+com.bs.activity.AddMusicActivity: AddMusicActivity()
+com.bs.activity.InitActivity
+com.bs.activity.InitActivity: InitActivity()
+com.bs.activity.MainActivity
+com.bs.activity.MainActivity: MainActivity()
+com.bs.service.BackgroundService
+com.bs.service.BackgroundService: BackgroundService()

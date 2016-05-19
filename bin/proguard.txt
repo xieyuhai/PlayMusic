@@ -1,0 +1,12 @@
+# view AndroidManifest.xml #generated:34
+-keep class com.bs.activity.AddMusicActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:25
+-keep class com.bs.activity.InitActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:21
+-keep class com.bs.activity.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:39
+-keep class com.bs.service.BackgroundService { <init>(...); }
+

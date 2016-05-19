@@ -1,7 +1,6 @@
 package com.bs.activity;
 
 import com.bs.rockingmusic1.R;
-import com.bs.rockingmusic1.R.layout;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -34,7 +33,7 @@ public class InitActivity extends Activity {
 			}
 		};
 		/**
-		 * 延时3秒执行
+		 * 延时执行
 		 */
 		handler.postDelayed(runable, 500);
 	}
