@@ -118,7 +118,7 @@ public class Utils {
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT);
 		params.setMargins(0, 0, 0, 0);
-		params.width = ScreenUtil.get(context.getApplicationContext()).widthPixel * 4 / 5;
+		params.width = ScreenUtil.get(context).widthPixel * 4 / 5;
 		dialog.addContentView(view, params);
 
 		if (!TextUtils.isEmpty(msg)) {
