@@ -25,7 +25,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -240,24 +239,42 @@ public class MainActivity extends ListActivity implements OnClickListener {
 		// }).start();
 	}
 
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			Utils.showDialog(MainActivity.this, R.layout.dialog_layout, getString(R.string.exit), new DialogListener() {
-				@Override
-				public void sure() {
-					handler.removeCallbacks(runnable);
-					MainActivity.this.finish();
-				}
+	@Override
+	public void onBackPressed() {
+		// super.onBackPressed();
+		Utils.showDialog(this, R.layout.dialog_layout, getString(R.string.exit), new DialogListener() {
+			@Override
+			public void sure() {
+				handler.removeCallbacks(runnable);
+				MainActivity.this.finish();
+			}
 
-				@Override
-				public void cancel() {
-					Utils.showToast(MainActivity.this, "cancel");
-				}
-			});
-
-		}
-		return super.onKeyDown(keyCode, event);
+			@Override
+			public void cancel() {
+				Utils.showToast(MainActivity.this, "cancel");
+			}
+		});
 	}
+
+	// public boolean onKeyDown(int keyCode, KeyEvent event) {
+	// if (keyCode == KeyEvent.KEYCODE_BACK) {
+	// Utils.showDialog(MainActivity.this, R.layout.dialog_layout,
+	// getString(R.string.exit), new DialogListener() {
+	// @Override
+	// public void sure() {
+	// handler.removeCallbacks(runnable);
+	// MainActivity.this.finish();
+	// }
+	//
+	// @Override
+	// public void cancel() {
+	// Utils.showToast(MainActivity.this, "cancel");
+	// }
+	// });
+	//
+	// }
+	// return super.onKeyDown(keyCode, event);
+	// }
 
 	@Override
 	public void onClick(View v) {
@@ -372,6 +389,5 @@ public class MainActivity extends ListActivity implements OnClickListener {
 
 		Log.i("TAG", "onDestroy  bind=" + bind);
 		mSongChangeListener.stop();
-
 	}
 }
